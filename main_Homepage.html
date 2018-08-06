@@ -1,0 +1,452 @@
+<!DOCTYPE HTML>
+<HTML>
+<head>
+	<meta charset="UTF-8">
+	<title>게임 개발자들의 휴식공간</title>
+<!--초기화-->
+<style>
+
+@font-face{
+	font-family:'메이플스토리','maplestory','맑은 고딕';
+	src:url(Maplestory right.ttf) format('truetype');
+}
+	*{
+		margin:0; padding:0;
+		font-family:'Maplestory','Maplestory right','맑은 고딕', 'Malgun Gothic', Gothic, sans-serif;
+
+	}
+	a{text-decoration:none;}
+	li{list-style:none;}
+</style>
+<!--기본클래스-->
+<style>
+	.pull-left{float:left;}
+	.pull-right{float:right;}
+</style>
+<!--2. 페이지 구성하기-->
+<style>
+		body{
+			width:960px; margin:0 auto;
+			background-color:red;
+			background-image:url('언리얼.png'), url('유니티.png'),url('눈꽃.jpg');
+			background-repeat: no-repeat;
+			background-position:left,right,center,center;
+			background-size: 12%,10%,100%;
+			background-attachment: fixed;
+
+
+		}
+		#Page-wrapper{
+			background:white;
+			margin:40px 0; padding:10px 20px;
+			border-radius:5px;
+			box-shadow:0 2px 6px rgba(100, 100, 100, 0.3);
+		}
+
+
+</style>
+<!--3.헤더 구성하기-->
+<style>
+	#main-header{
+		padding:40px 50px;
+		background-image: url('유니티 언리얼.jpg');
+		background-size: 80%;
+		background-repeat: no-repeat;
+		background-position:82px 20px;
+
+	}
+	#header1{
+		background-color: white;
+		width:60%;
+		margin-left:170px;
+	}
+	.master-title{
+		text-align: center;
+		font-size:40px;
+		color:black;
+	}
+	.master-description{
+	  text-align: center;
+		font-size:15px; font-weight:500px;
+		color:black;
+	}
+</style>
+<!--4.내비게이션 및 풀다문 메뉴 구성하기-->
+<style>
+	#main-navigation{
+			border-top:1px solid black;
+			border-bottom:1px solid black;
+			background-color: /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ebf1f6+0,abd3ee+50,89c3eb+51,d5ebfb+100;Blue+Gloss+%234 */
+		background: rgb(235,241,246); /* Old browsers */
+	background-image: background: -webkit-linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
+	background-image: background: -o-linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
+	background-image: background: linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
+	background: -o-linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
+	background: linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%); /* FF3.6-15 */
+	 /* Chrome10-25,Safari5.1-6 */
+	 /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 ); /* IE6-9 */
+	;
+			margin-bottom:20px;
+			height:40px;
+		}
+	.disblock li ul{
+		display:none;
+		position:absolute;
+		border:1px solid black;
+		background:white;
+	}
+	.disblock li:hover ul{
+		display:block;
+			width:150px;
+	}
+
+	.outer-menu-item{
+		float:left;
+		position:relative;
+	}
+	.outer-menu-item:hover{
+		background:black;
+		color:white;
+	}
+	.outer-menu-item ul:nth-child(4):active #Page-wrapper{
+		opacity: 0.1;
+	}
+
+	.menu-title{
+		/*text-shadow:*/
+		display:block;
+		height:30px; line-height:30px;
+		text-shadow:2px 2px 4px;
+		text-align:center;
+		padding: 5px 20px;
+	}
+	.menu-title:hover{
+		color:white;
+		background-color: black;
+	}
+	.menu-title{
+
+	}
+	.inner-menu{
+		display:none;
+		position:absolute;
+		top:40px; left:0;
+		width:100%;
+		background:white;
+		box-shadow:0 2px 6px rgba(5, 5, 5, 0.9);
+		z-index:1000;
+		text-align:center
+	}
+
+	.inner-menu-item{
+		display:block
+		border:1px solid black;
+	}
+	.inner-menu-item > a{
+		display:block;
+		padding:5px 10px;
+		color:black;
+	}
+	.inner-menu-item > a:hover{
+		background:black;
+		color:white;
+	}
+
+	</style>
+	<!--검색 양식 추가하기(내비게이션 내부의 검색)-->
+	<style>
+	.search-bar{
+		height:26px;
+		padding:7px;
+	}
+	.input-search{
+			box-shadow: inset 2px 2px 1px black ;
+		display:block;
+		float:left;
+
+		background-color:#FFFFFF;
+		border:1px solid #CCCCCC;
+		border-radius: 15px 0 0 15px;
+
+		width:120px; height:24px;
+		padding:0 0 0 10px;
+		font-style:12px;
+		color:#555555;
+	}
+	.input-search:focus{
+		border-color:rgba(82,168,236,0.8);
+		outline:0;
+	  box-shadow: inset 2px 2px 1px black ;
+	}
+	.input-search-submit{
+		display:block;
+		float:left;
+		background-color: black;
+		color:white;
+		width:50px;	height: 26px;
+		border-radius:0 15px 15px 0;
+		border:1px solid #CCCCCC;
+		margin-left:-1px;
+	 box-shadow: 2px 2px 1px black ;
+		vertical-align:top;
+		display:inline-block;
+}
+	</style>
+	<!--본문 추가하기(중앙 내용)-->
+	<style>
+		/*body 태그의 너비:960px*/
+		/*#page-wrapper 태그의 padding 속성으로 내용물 너비는 920px */
+		#content{overflow:hidden;}
+		#main-section{
+			float:left;
+			width:710px;
+		}
+		#main-aside{
+			float:right;
+			width:200px;
+		}
+		.vid{
+			width:430px;
+			height: 280px;
+			left:240px;
+			position: relative;
+		}
+		#scar{
+			text-align: center;
+			color:red;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+		#interview{
+			text-align: center;
+		}
+	</style>
+	<!--6.본문 추가하기(본문 포스트 상단)-->
+	<style>
+		.artivle-date{
+			font-size:20px;
+		}
+		article{
+			padding:0 10px 20px 10px;
+			border-bottom:1px solid #C8C8C8;
+		}
+		.article-header{padding:20px 0;}
+		.article-title{
+			font-size:25px;
+			font-weight: 500;
+		  font-weight:bold;
+			padding-bottom: 10px;
+		}
+		.article-date{font-size:13px;}
+		.article-body{
+			font-size:14px;
+		}
+    </style>
+		<!--본문 추가하기(사이드 메뉴)-->
+		<style>
+				.aside-list{
+					padding:10px 10px 40px 10px;
+					border:3px solid green;
+					border-radius: 10px 10px 10px 10px;
+					box-shadow: 3px 2px 3px rgba(100,20,510,31);
+					position: fixed;
+				}
+				.aside-list > h3{
+					text-align: center;
+					font-size:15px;
+					font-weight:600;
+				}
+				.aside-list li a{
+					padding-bottom: 50px;
+					text-align:left;
+					margin-left:8px;
+					font-size:13px;
+					color:#6C6C6C;
+				}
+				.aside-list li a:hover{
+					color:red;
+					font-size:15px;
+				}
+		</style>
+</head>
+	<body blockquote>
+		<div id="Page-wrapper">
+			<header id="main-header">
+				<a href="main_Homepage.html">
+				<hgroup id="header1">
+				<h1 class="master-title">Game Developers Club</h1>
+				<h2 class="master-description">-게임 개발자들의 휴식공간-</h2>
+				</hgroup>
+			</a>
+			</header>
+
+			<nav id="main-navigation"> <!--네비게이션-->
+				<div class="disblock"><!--네비게이션 블럭 생성-->
+				<div class="pull-left">
+					<ul class="outer-menu">
+
+						<li class="outer-menu-item">
+							<span class="menu-title">Programmer</span>
+								<ul class="inner-menu">
+									<li class="inner-menu-item"><a href="c_language.html">C</a></li>
+									<li class="inner-menu-item"><a href="c_shap.html">C#</a></li>
+									<li class="inner-menu-item"><a href="C_plus.html">C++</a></li>
+									<li class="inner-menu-item"><a href="java.html">Java</a></li>
+									<li class="inner-menu-item"><a href="Java_script.html">JavaScript</a></li>
+									<li class="inner-menu-item"><a href="SQL.html">SQL</a></li>
+								</ul>
+						</li>
+
+						<li class="outer-menu-item">
+							<span class="menu-title">Artist</span>
+							<ul class="inner-menu">
+								<li class="inner-menu-item"><a href="3DS_max.html">3DS Max</a></li>
+								<li class="inner-menu-item"><a href="Maya.html">Maya</a></li>
+								<li class="inner-menu-item"><a href="Illustrator.html">Illustrator</a></li>
+							</ul>
+						</li>
+
+						<li class="outer-menu-item">
+							<span class="menu-title">Game Designer</span>
+							<ul class="inner-menu">
+								<li class="inner-menu-item"><a href="story_Board.html">Directing</a></li>
+								<li class="inner-menu-item"><a href="Communication.html">Communication</a></li>
+								<li class="inner-menu-item"><a href="Game_Desing.html">Game design</a></li>
+								<li class="inner-menu-item"><a href="Scenario_Writing.html">Scenario Writing</a></li>
+							</ul>
+						</li>
+
+
+					</ul>
+				</div>
+				<div class="pull-right">
+					<div class="search-bar">
+						<form>
+							<input type="text" class="input-search" placeholder="Search"/>
+							<input type="submit" class="input-search-submit" value="검색"/>
+						</form>
+					</div>
+				</div>
+			</div>
+			</nav>
+
+		<div id="content">
+			<aside id="main-aside">
+				<div class="aside-list">
+						<h3>최신 정보</h3>
+						<ul class="inner-aside">
+							<li class="list"><a href="https://byline.network/2018/04/02-2/" target="_blank">블록 체인(Block Chain)</a></li>
+							<li class="list"><a href="http://blogs.nvidia.co.kr/2016/08/03/difference_ai_learning_machinelearning/" target="_blank">머신 러닝(Machine Learning)</a></li>
+						</ul>
+				</div>
+			</aside>
+			<section id="main-sction">
+				<article>
+					<div class="article-header">
+						<h1 class="article-title">최신 게임 동향</h1>
+						<p class="artivle-date">정식 서비스전 최종 테스트! '로스트 아크'</p>
+					</div>
+
+					<div class="article-body">
+						<img src="로스트아크.jpg"/>
+						<br />
+						<br />
+						<p>이번 테스트는 로스트아크 공식 홈페이지를 통해 테스터로 선정된 이용자를 대상으로 23일부터 6월 3일까지 12일에 걸쳐 진행된다. 첫날인 23일부터 8일차인 30일까지는 매일 낮 12시부터 밤 12시까지 테스트가 진행되며, 9일차인 31일부터 마지막 날인 6월 3일까지는 24시간동안 자유롭게 게임을 플레이 할 수 있어 다양한 콘텐츠에 대한 더욱 심도 있는 테스트가 가능해진다.
+						</p>
+						<br />
+						<p>1차와 2차 테스트를 통해 게임의 메커니즘과 전체 콘텐츠의 구조를 확립한 로스트아크는 이번 최종 CBT에서 게임의 완성도를 높이는데 초점을 맞춰 테스트를 진행하게 된다.
+
+그 동안 공식 홈페이지의 '리샤의 편지'를 통해 알려진 바와 같이 이용자들의 편의성 향상을 위한 다양한 시스템 개선과 신규 클래스인 호크아이와 기공사를 비롯한 신규 콘텐츠의 추가도 이루어져 내실 있는 테스트가 될 것으로 기대된다.
+
+지원길 스마일게이트 RPG 대표는 "2차 테스트 이후 이용자 여러분의 정성 어린 피드백을 꼼꼼히 읽고 반영하여 공을 들여 준비한 마지막 테스트가 드디어 시작된다"며 "로스트아크가 PC MMORPG의 새로운 트렌드를 이끌어나갈 수 있는 재미있고 완성도 높은 게임이 될 수 있도록 이번 테스트에서도 많은 의견과 제안을 부탁 드린다"고 밝혔다.
+</p>
+					</div>
+				</article>
+			</section>
+			<section id="main-sction"> <!--섹션 파트. 내용추가시 복사 붙여 넣기-->
+				<article>
+					<div class="article-header">
+						<p class="artivle-date">"뮤 오리진2, 다른서버 유저와 함께 즐기는 MMORPG 2.0 보여줄 것"</p>
+					</div>
+					<div class="article-body">
+						<img src="뮤오리진.jpg"/>
+						<br />
+						<br />
+						<p>웹젠은 16일 오전 10시 30분, 양재 엘타워에서 '2018 웹젠 미디어데이'를 개최했다. 웹젠은 이번 행사를 통해 ‘뮤 오리진’의 후속게임 ‘뮤 오리진2’의 사전예약, CBT 일정과 서비스 내용은 물론, 글로벌 출시를 앞둔 신작 라인업 4종을 함께 공개했다.
+						</p>
+						<br />
+							<img src="웹젠.jpg"/>
+						<p>지난 2015년 웹젠은 뮤 오리진이라는 타이틀을 통해 한국에서 본격적인 MMORPG 시장을 열었다고 자부하고 있다. '뮤 오리진'은 웹젠이 추가적인 게임 산업을 진행할 때 필요한 인력, 인프라, 그리고 게임에 투자할 수 있는 여력을 제공해준 고마운 게임이다. 이런 여러가지 의미가 있는 뮤 오리진의 후속작을 소개할 수 있다는 것을 진심으로 기쁘게 생각한다.
+
+오늘은 '뮤 오리진2' 이외에도 해외 시장 진출을 위해 웹젠이 준비하고 있는 신작 라인업을 소개하는 자리다. 웹젠의 해외 라인업은 웹젠 닷컴(WEBZEN.com)이라는 글로벌 포탈을 중심으로 한국과 미국, 유럽에서 함께 운영 중이며 현재 2천만 명정도의 유저를 확보하고 있다. 웹젠은 기존의 MMORPG 이외에 SNG와 스포츠 장르의 게임을 중심으로 해외시장을 공략할 예정이다. '뮤 오리진2'가 웹젠에 있어 정말 많은 의미가 있는 게임인데, 많은 조언과 질책 부탁하고 앞으로도 많은 관심 부탁드린다.
+					</div>
+				</article>
+			</section>  <!--여기까지 복붙-->
+			<section id="main-sction">
+				<article>
+					<div class="article-header">
+						<p class="artivle-date">락스 게이밍, 일본 프로게임단 '7th heaven' 인수... 글로벌 e스포츠팀으로 발돋움</p>
+					</div>
+
+					<div class="article-body">
+						<img src="락스 게임즈.png"/>
+						<br />
+						<br />
+						<p>14일 락스 게이밍이 일본 프로게임단 '7th heaven'을 인수하며 글로벌 e스포츠 게임단으로 발전하겠다는 포부를 밝혔다.
+						</p>
+						<br />
+						<p>7th heaven은 2015년부터 LJL에서 꾸준한 성적을 내왔던 e스포츠팀으로, '조이럭' 윤덕진, '새비지' 장승규 등의 다양한 한국 선수 및 코치들과 함께 한 경험이 있다. 새롭게 인수된 7th heaven은 2018 LJCS 서머에서 활동할 전망이다.
+						</p>
+						<br/>
+					<p>
+					락스 게이밍은 창단 이후부터 꾸준하게 글로벌한 구단을 만들기 위해 노력해왔으며, 'onalytica' 기준 2016 LoL 월드 챔피언쉽의 영향력 있는 브랜드에서 4위와 14위를 기록했었다. 이번 인수도 세계 1위 e스포츠 클럽이 되겠다는 락스 게이밍의 비전의 일부로 보인다. 언어에만 국한된 단순한 현지화를 넘어서서, 나라별로 색다른 글로벌 컨텐츠를 제공하겠다는 게 락스 게이밍의 목표다.
+					</p>
+					<br/>
+					<p>LJL 중하위권이었던 7th heaven이 락스 게이밍의 매니지먼트를 만나서 어떻게 변하는지도 주목할 만한 부분이다. 피지컬 트레이닝과 멘탈 케어를 포함한 락스의 선수 매니지먼트 시스템은 락스 타이거즈(현 한화생명e스포츠)의 발전과 성공을 통해 일직이 효과를 증명한 바가 있다.</p>
+					<br/>
+					<p>한편, 7th heaven에는 리그 오브 레전드 팀만 있는게 아니다. 7th heaven의 배틀그라운드 팀도 락스 게이밍의 소속으로 일본에서 활동하게 된다. 베인글로리, 철권을 비롯한 다양한 종목을 통해 국내외에서 활발하게 활동하는 락스 게이밍의 본격적인 글로벌화가 7th heaven의 인수와 함께 본격적으로 막을 올릴 계획이다. </p>
+					</div>
+				</article>
+			</section>
+			<section id="main-sction"> <!--섹션 파트. 내용추가시 복사 붙여 넣기-->
+				<article>
+					<div class="article-header">
+						<p class="artivle-date" id="interview">[인터뷰] 라스트 오브 어스 파트2, '정의를 위해 어디까지 잔혹해질 수 있는가?'</p>
+					</div>
+					<div class="article-body">
+						<video class="vid" controls="controls" poster="라오어2.jpg">
+							<source src="라오어.mp4" type="video/mp4" /> <!--비디오 테이프 수정요-->
+						</video>
+						<br/>
+						<hr />
+						<p id="scar">※다소 잔인한 장면이 포함 되어 있으니 임산부, 심약자등은 주의해주시기 바랍니다.※</p>
+						<hr />
+						<p>금일(13일, 미국 현지시각) E3 2018 소니 퍼스트 파티 부스에서는 너티독 개발자들이 직접 참여하는 '라스트 오브 어스 파트2(이하 라오어2)' 프레젠테이션과 인터뷰 세션이 마련됐다.
+						</p>
+						<br />
+						<p>
+신규 트레일러 공개 이후 실제 인게임 그래픽인지 시네마틱 영상인지 구별하기 어려울 정도로 뛰어난 연출로 화제가 된 '라오어2'의 최신 정보를 들을 수 있는 세션이었기에 현장에는 전 세계에서 찾아온 여러 매체 관계자들이 빼곡하게 자리를 채웠다.
+</p>
+<br/>
+<p>
+	발표는 너티독 직원이 플레이하는 데모 버전 시연을 관람하는 형태로 진행됐다. 전체적인 내용은 지난 소니 컨퍼런스를 통해 공개된 트레일러 영상과 똑같은 흐름으로 진행됐으나, 총의 피격 부위가 달라지는 등의 디테일을 통해 직접 플레이가 가능한 실제 시연 버전임을 확인할 수 있었다.
+</p>
+<br/>
+<p>
+	데모 버전의 시연 이후, 곧바로 현장에 참가한 매체 관계자를 대상으로 인터뷰가 진행됐다. 이날 질의응답에는 '라오어2'의 디렉터이자 공동 작가인 닐 드럭만(Neil Druckmann), 공동 게임 디렉터 커트 마지노(Kurt Margenau), 할리 그로스(Halley Gross) 공동 작가, 안소니 뉴먼(Anthony Newman) 공동 게임 디렉터가 참여했다.
+</p>
+					</div>
+				</article>
+			</section>
+		</div><!-- 내용추가시 div 내부에 적용-->
+					<footer id="main-footer">
+						<p>Created By Seong Min Je</p>
+					<br/>
+						<div>
+								<p>출처:<a href="http://www.inven.co.kr/webzine/news/">인벤 뉴스</a></p>
+						</div>
+					</footer>
+		</div>
+	</body>
+</HTML>

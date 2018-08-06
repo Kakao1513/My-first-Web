@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<HTML>
+<head>
+	<meta charset="UTF-8">
+	<title>게임 개발자들의 휴식공간</title>
+<!--초기화-->
+<style>
+@font-face{
+	font-family:'메이플스토리','maplestory','맑은 고딕';
+	src:url(Maplestory right.ttf) format('truetype');
+}
+	*{
+		margin:0; padding:0;
+	font-family:'Maplestory','Maplestory right','맑은 고딕', 'Malgun Gothic', Gothic, sans-serif;
+	}
+	a{text-decoration:none;}
+	li{list-style:none;}
+</style>
+<!--기본클래스-->
+<style>
+	.pull-left{float:left;}
+	.pull-right{float:right;}
+</style>
+<!--2. 페이지 구성하기-->
+<style>
+		body{
+			width:960px; margin:0 auto;
+			background-image: url('언리얼.png'), url('유니티.png'),url('눈꽃.jpg');
+			background-repeat: no-repeat;
+			background-position: left, right,center,center;
+			background-size: 12%,10%,100%;
+			background-attachment: fixed;
+			background-color:#A2FFFF;
+		}
+		#Page-wrapper{
+			background:white;
+			opacity:1.0;
+			margin:40px 0; padding:10px 20px;
+			border-radius:5px;
+			box-shadow:0 2px 6px rgba(100, 100, 100, 0.3);
+		}
+
+		img{
+			float:left;
+			position: relative;
+		}
+		.C-class{
+			width:440px;
+			height:280px;
+		}
+</style>
+<!--3.헤더 구성하기-->
+<style>
+	#main-header{
+		padding:40px 50px;
+		background-image: url('유니티 언리얼.jpg');
+		background-size: 80%;
+		background-repeat: no-repeat;
+		background-position:82px 20px;
+
+	}
+	#header1{
+		background-color: white;
+		width:60%;
+		margin-left:170px;
+	}
+	.master-title{
+		text-align: center;
+		font-size:40px;
+		color:black;
+	}
+	.master-description{
+	  text-align: center;
+		font-size:15px; font-weight:500px;
+		color:black;
+	}
+</style>
+<!--4.내비게이션 및 풀다문 메뉴 구성하기-->
+<style>
+	#main-navigation{
+			border-top:1px solid black;
+			border-bottom:1px solid black;
+			background-color: /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ebf1f6+0,abd3ee+50,89c3eb+51,d5ebfb+100;Blue+Gloss+%234 */
+		background: rgb(235,241,246); /* Old browsers */
+	background-image: background: -webkit-linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
+	background-image: background: -o-linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
+	background-image: background: linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
+	background: -o-linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
+	background: linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%); /* FF3.6-15 */
+	 /* Chrome10-25,Safari5.1-6 */
+	 /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 ); /* IE6-9 */
+	;
+			margin-bottom:20px;
+			height:40px;
+		}
+	.disblock li ul{
+		display:none;
+		position:absolute;
+		border:1px solid black;
+		background:white;
+	}
+	.disblock li:hover ul{
+		display:block;
+		width:150px;
+	}
+
+	.outer-menu-item{
+		float:left;
+		position:relative;
+	}
+	.outer-menu-item:hover{
+		background:black;
+		color:white;
+	}
+	.menu-title{
+		/*text-shadow:*/
+		display:block;
+		height:30px; line-height:30px;
+		text-shadow:2px 2px 4px;
+		text-align:center;
+		padding: 5px 20px;
+	}
+	.menu-title:hover{
+		color:white;
+		background-color: black;
+	}
+	.menu-title{
+
+	}
+	.inner-menu{
+		display:none;
+		position:absolute;
+		top:40px; left:0;
+		width:100%;
+		background:white;
+		box-shadow:0 2px 6px rgba(5, 5, 5, 0.9);
+		z-index:1000;
+		text-align:center
+	}
+
+	.inner-menu-item{
+		display:block
+		border:1px solid black;
+	}
+	.inner-menu-item > a{
+		display:block;
+		padding:5px 10px;
+		color:black;
+	}
+	.inner-menu-item > a:hover{
+		background:black;
+		color:white;
+	}
+	</style>
+	<!--검색 양식 추가하기(내비게이션 내부의 검색)-->
+	<style>
+	.search-bar{
+		height:26px;
+		padding:7px;
+	}
+	.input-search{
+		display:block;
+		float:left;
+
+		background-color:#FFFFFF;
+		border:1px solid #CCCCCC;
+		border-radius: 15px 0 0 15px;
+		box-shadow: inset 2px 2px 1px black ;
+
+		width:120px; height:24px;
+		padding:0 0 0 10px;
+		font-style:12px;
+		color:#555555;
+	}
+	.input-search:focus{
+		border-color:rgba(82,168,236,0.8);
+		outline:0;
+		box-shadow: inset 2px 2px 1px black ;
+	}
+	.input-search-submit{
+		display:block;
+		float:left;
+box-shadow: 2px 2px 1px black ;
+		width:50px;	height: 26px;
+		border-radius:0 15px 15px 0;
+		border:1px solid #CCCCCC;
+		background-color: black;
+		color:white;
+		margin-left:-1px;
+
+		vertical-align:top;
+		display:inline-block;
+}
+	</style>
+	<!--본문 추가하기(중앙 내용)-->
+	<style>
+		/*body 태그의 너비:960px*/
+		/*#page-wrapper 태그의 padding 속성으로 내용물 너비는 920px */
+		#content{overflow:hidden;}
+		#main-section{
+			float:left;
+			width:710px;
+		}
+		#main-aside{
+			float:right;
+			width:200px;
+			fixed
+		}
+		.vid{
+			width:430px;
+			height: 280px;
+			left:240px;
+			position: relative;
+		}
+		#scar{
+			text-align: center;
+			color:red;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+		#interview{
+			text-align: center;
+		}
+	</style>
+	<!--6.본문 추가하기(본문 포스트 상단)-->
+	<style>
+		.artivle-date{
+			font-size:20px;
+		}
+		article{
+			padding:0 10px 20px 10px;
+			border-bottom:1px solid #C8C8C8;
+		}
+		.article-header{padding:20px 0;}
+		.article-title{
+			font-size:25px;
+			font-weight: 500;
+			font-weight:bold;
+			padding-bottom: 10px;
+		}
+		.article-date{font-size:13px;}
+		.article-body{
+			font-size:14px;
+		}
+    </style>
+		<!--본문 추가하기(사이드 메뉴)-->
+		<style>
+				.aside-list{
+					padding:10px 50px 40px 40px;
+					border:3px solid green;
+					margin-left: 50px;
+					box-shadow: 3px 2px 3px rgba(100,20,510,31);
+					border-radius: 10px 10px 10px 10px;
+					position:fixed;
+				}
+				.aside-list > h3{
+					text-align: center;
+					font-size:15px;
+					font-weight:600;
+				}
+				.aside-list li a{
+					margin-left:8px;
+					font-size:13px;
+					color:#6C6C6C;
+				}
+				.aside-list li a:hover{
+					color:red;
+					font-size:15px;
+				}
+		</style>
+</head>
+	<body blockquote>
+		<div id="Page-wrapper">
+			<header id="main-header">
+				<a href="main_Homepage.html">
+				<hgroup id="header1">
+				<h1 class="master-title">Game Developers Club</h1>
+				<h2 class="master-description">-게임 개발자들의 휴식공간-</h2>
+				</hgroup>
+			</a>
+			</header>
+
+			<nav id="main-navigation"> <!--네비게이션-->
+				<div class="disblock"><!--네비게이션 블럭 생성-->
+				<div class="pull-left">
+					<ul class="outer-menu">
+
+						<li class="outer-menu-item">
+							<span class="menu-title">Programmer</span>
+								<ul class="inner-menu">
+									<li class="inner-menu-item"><a href="c_language.html">C</a></li>
+									<li class="inner-menu-item"><a href="c_shap.html">C#</a></li>
+									<li class="inner-menu-item"><a href="C_plus.html">C++</a></li>
+									<li class="inner-menu-item"><a href="java.html">Java</a></li>
+									<li class="inner-menu-item"><a href="Java_script.html">JavaScript</a></li>
+									<li class="inner-menu-item"><a href="SQL.html">SQL</a></li>
+								</ul>
+						</li>
+
+						<li class="outer-menu-item">
+							<span class="menu-title">Artist</span>
+							<ul class="inner-menu">
+								<li class="inner-menu-item"><a href="3DS_max.html">3DS Max</a></li>
+								<li class="inner-menu-item"><a href="Maya.html">Maya</a></li>
+								<li class="inner-menu-item"><a href="Illustrator.html">Illustrator</a></li>
+							</ul>
+						</li>
+
+						<li class="outer-menu-item">
+							<span class="menu-title">Game Designer</span>
+							<ul class="inner-menu">
+								<li class="inner-menu-item"><a href="story_Board.html">Directing</a></li>
+								<li class="inner-menu-item"><a href="Communication.html">Communication</a></li>
+								<li class="inner-menu-item"><a href="Game_Desing.html">Game design</a></li>
+								<li class="inner-menu-item"><a href="Scenario_Writing.html">Scenario Writing</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="pull-right">
+					<div class="search-bar">
+						<form>
+							<input type="text" class="input-search" placeholder="Search" />
+							<input type="submit" class="input-search-submit" value="검색" />
+						</form>
+					</div>
+				</div>
+			</div>
+			</nav>
+
+		<div id="content">
+			<aside id="main-aside">
+				<div class="aside-list">
+						<h3>그래픽스</h3>
+						<ul class="inner-aside">
+							<li class="list"><a href="https://youtu.be/jY8P5F79vBM" target="_blank">원화가</a></li>
+							<li class="list"><a href="https://youtu.be/IF5FaSt-GV0" target="_blank">쉐이더</a></li>
+						</ul>
+					</div>
+			</aside>
+			<section id="main-sction">
+				<article>
+					<div class="article-header">
+						<h1 class="article-title">3DS MAX?</h1>
+						<p class="artivle-date">훤히 보이는 디지털 시네마!</p>
+					</div>
+					<div class="article-body">
+						<img class="C-class" src="3ds.jpg"/>
+						<br />
+						<br />
+						<p>3ds Max는 Autodesk사의 제품으로 현재 Maya와 더불어 가장 널리 사용되는 소프트웨어 중 하나이다.</P>
+						<br />
+						<p>3ds Max는 호환성이 높은 윈도우 기반으로 구동되는 데다 특히 모델링 기능이 다른 소프트웨어에 비해 우수하여 게임 제작에 널리 사용되고 있으며, 그 밖에 영화 VFX, 건축물 시연을 위한 프로덕션에도 사용되고 있다.
+					</p>
+					<br />
+					<p>
+						최근 버전의 3ds Max에는 모델링 및 애니메이션 툴 이외에도 물체의 표면 속성을 나타내는 고급 쉐이더 기능, 삼차원 객체들의 상호간 충돌 처리 등이 속하는 동적 시뮬레이션, 불·폭발과 같은 VFX 제작에 많이 사용되는 파티클 시스템, 3D 공간 내 빛의 움직임을 물리적으로 풀이하여 영상을 얻는 방법인 전역 조명, 3D 공간 내 물체의 표면을 작은 조각으로 나누고 이들 사이에 주고 받는 에너지의 평형 상태를 찾는 전역 조명의 한 방법인 래디오시티, 직관적이고도 최적의 사용자화가 가능한 인터페이스, 자체 스크립트 언어 등의 기능들이 포함되어 있다.
+					</p>
+					<br/>
+					<p>
+						한국계 배우인 김윤진이 출연한 것으로도 화제를 모았던 미국 ABC-TV의 드라마 〈로스트(Lost)〉에서는 3ds Max를 통해 작업한 VFX를 통해 극의 사실성을 살리고 스토리의 중심에 있는 불가사의한 사건들을 더욱 실감나게 표현하였다. 미국 CBS-TV 의 인기드라마 〈과학수사대(CSI)〉에서도 살인과 수술 장면, 현실감 있는 사건 현장 및 피해상황을 사실적으로 묘사하는 데 있어 3ds Max가 효과적으로 사용되었다. 한편 〈위기의 주부들〉과 같이 VFX가 그다지 쓰이지 않을 것 같은 드라마에서도 부드러운 장면 전환, 색보정, 화면 대치 등과 같은 미묘한 효과 구현 등에 3ds Max가 사용되고 있다.
+					</p>
+					</div>
+				</article>
+			</section>
+		</div><!-- 내용추가시 div 내부에 적용-->
+					<footer id="main-footer">
+						<p>Created By Seong Min Je<p>
+					<br/>
+						<div>
+								<p>출처:<a href="https://terms.naver.com/entry.nhn?docId=3435035&cid=58460&categoryId=58460">네이버 지식백과</a></p>
+						</div>
+					</footer>
+		</div>
+	</body>
+
+</HTML>

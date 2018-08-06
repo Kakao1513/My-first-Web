@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<HTML>
+<head>
+	<meta charset="UTF-8">
+	<title>게임 개발자들의 휴식공간</title>
+<!--초기화-->
+<style>
+@font-face{
+	font-family:'메이플스토리','maplestory','맑은 고딕';
+	src:url(Maplestory right.ttf) format('truetype');
+}
+	*{
+		margin:0; padding:0;
+	font-family:'Maplestory','Maplestory right','맑은 고딕', 'Malgun Gothic', Gothic, sans-serif;
+	}
+	a{text-decoration:none;}
+	li{list-style:none;}
+</style>
+<!--기본클래스-->
+<style>
+	.pull-left{float:left;}
+	.pull-right{float:right;}
+</style>
+<!--2. 페이지 구성하기-->
+<style>
+		body{
+			width:960px; margin:0 auto;
+			background-image: url('언리얼.png'), url('유니티.png'),url('눈꽃.jpg');
+			background-repeat: no-repeat;
+			background-position: left, right,center,center;
+			background-size: 12%,10%,100%;
+			background-attachment: fixed;
+			background-color:#A2FFFF;
+		}
+		#Page-wrapper{
+			background:white;
+			opacity:1.0;
+			margin:40px 0; padding:10px 20px;
+			border-radius:5px;
+			box-shadow:0 2px 6px rgba(100, 100, 100, 0.3);
+		}
+
+		.C-class{
+			width:500px;
+			height:280px;
+		}
+</style>
+<!--3.헤더 구성하기-->
+<style>
+	#main-header{
+		padding:40px 50px;
+		background-image: url('유니티 언리얼.jpg');
+		background-size: 80%;
+		background-repeat: no-repeat;
+		background-position:82px 20px;
+
+	}
+	#header1{
+		background-color: white;
+		width:60%;
+		margin-left:170px;
+	}
+	.master-title{
+		text-align: center;
+		font-size:40px;
+		color:black;
+	}
+	.master-description{
+	  text-align: center;
+		font-size:15px; font-weight:500px;
+		color:black;
+	}
+</style>
+<!--4.내비게이션 및 풀다문 메뉴 구성하기-->
+<style>
+	#main-navigation{
+			border-top:1px solid black;
+			border-bottom:1px solid black;
+			background-color: /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ebf1f6+0,abd3ee+50,89c3eb+51,d5ebfb+100;Blue+Gloss+%234 */
+		background: rgb(235,241,246); /* Old browsers */
+	background-image: background: -webkit-linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
+	background-image: background: -o-linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
+	background-image: background: linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
+	background: -o-linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
+	background: linear-gradient(rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%); /* FF3.6-15 */
+	 /* Chrome10-25,Safari5.1-6 */
+	 /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 ); /* IE6-9 */
+	;
+			margin-bottom:20px;
+			height:40px;
+		}
+	.disblock li ul{
+		display:none;
+		position:absolute;
+		border:1px solid black;
+		background:white;
+	}
+	.disblock li:hover ul{
+		display:block;
+		width:150px;
+	}
+
+	.outer-menu-item{
+		float:left;
+		position:relative;
+	}
+	.outer-menu-item:hover{
+		background:black;
+		color:white;
+	}
+	.menu-title{
+		/*text-shadow:*/
+		display:block;
+		height:30px; line-height:30px;
+		text-shadow:2px 2px 4px;
+		text-align:center;
+		padding: 5px 20px;
+	}
+	.menu-title:hover{
+		color:white;
+		background-color: black;
+	}
+	.menu-title{
+
+	}
+	.inner-menu{
+		display:none;
+		position:absolute;
+		top:40px; left:0;
+		width:100%;
+		background:white;
+		box-shadow:0 2px 6px rgba(5, 5, 5, 0.9);
+		z-index:1000;
+		text-align:center
+	}
+
+	.inner-menu-item{
+		display:block
+		border:1px solid black;
+	}
+	.inner-menu-item > a{
+		display:block;
+		padding:5px 10px;
+		color:black;
+	}
+	.inner-menu-item > a:hover{
+		background:black;
+		color:white;
+	}
+	</style>
+	<!--검색 양식 추가하기(내비게이션 내부의 검색)-->
+	<style>
+	.search-bar{
+		height:26px;
+		padding:7px;
+	}
+	.input-search{
+		display:block;
+		float:left;
+
+		background-color:#FFFFFF;
+		border:1px solid #CCCCCC;
+		border-radius: 15px 0 0 15px;
+		box-shadow: inset 2px 2px 1px black ;
+
+		width:120px; height:24px;
+		padding:0 0 0 10px;
+		font-style:12px;
+		color:#555555;
+	}
+	.input-search:focus{
+		border-color:rgba(82,168,236,0.8);
+		outline:0;
+		box-shadow: inset 2px 2px 1px black ;
+	}
+	.input-search-submit{
+		display:block;
+		float:left;
+box-shadow: 2px 2px 1px black ;
+		width:50px;	height: 26px;
+		border-radius:0 15px 15px 0;
+		border:1px solid #CCCCCC;
+		background-color: black;
+		color:white;
+		margin-left:-1px;
+
+		vertical-align:top;
+		display:inline-block;
+}
+	</style>
+	<!--본문 추가하기(중앙 내용)-->
+	<style>
+		/*body 태그의 너비:960px*/
+		/*#page-wrapper 태그의 padding 속성으로 내용물 너비는 920px */
+		#content{overflow:hidden;}
+		#main-section{
+			float:left;
+			width:710px;
+		}
+		#main-aside{
+			float:right;
+			width:200px;
+			fixed
+		}
+		.vid{
+			width:430px;
+			height: 280px;
+			left:240px;
+			position: relative;
+		}
+		#scar{
+			text-align: center;
+			color:red;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+		#interview{
+			text-align: center;
+		}
+	</style>
+	<!--6.본문 추가하기(본문 포스트 상단)-->
+	<style>
+		.artivle-date{
+			font-size:20px;
+		}
+		article{
+			padding:0 10px 20px 10px;
+			border-bottom:1px solid #C8C8C8;
+		}
+		.article-header{padding:20px 0;}
+		.article-title{
+			font-size:25px;
+			font-weight: 500;
+			font-weight:bold;
+			padding-bottom: 10px;
+		}
+		.article-date{font-size:13px;}
+		.article-body{
+			font-size:14px;
+		}
+    </style>
+		<!--본문 추가하기(사이드 메뉴)-->
+		<style>
+		.aside-list{
+			padding:10px 35px 40px 35px;
+			border:3px solid green;
+
+			box-shadow: 3px 2px 3px rgba(100,20,510,31);
+			border-radius: 10px 10px 10px 10px;
+			position:fixed;
+		}
+				.aside-list > h3{
+					text-align: center;
+					font-size:15px;
+					font-weight:600;
+				}
+				.aside-list li a{
+					margin-left:8px;
+					font-size:13px;
+					color:#6C6C6C;
+				}
+				.aside-list li a:hover{
+					color:red;
+					font-size:15px;
+				}
+		</style>
+</head>
+	<body blockquote>
+		<div id="Page-wrapper">
+			<header id="main-header">
+				<a href="main_Homepage.html">
+				<hgroup id="header1">
+				<h1 class="master-title">Game Developers Club</h1>
+				<h2 class="master-description">-게임 개발자들의 휴식공간-</h2>
+				</hgroup>
+			</a>
+			</header>
+
+			<nav id="main-navigation"> <!--네비게이션-->
+				<div class="disblock"><!--네비게이션 블럭 생성-->
+				<div class="pull-left">
+					<ul class="outer-menu">
+
+						<li class="outer-menu-item">
+							<span class="menu-title">Programmer</span>
+								<ul class="inner-menu">
+									<li class="inner-menu-item"><a href="c_language.html">C</a></li>
+									<li class="inner-menu-item"><a href="c_shap.html">C#</a></li>
+									<li class="inner-menu-item"><a href="C_plus.html">C++</a></li>
+									<li class="inner-menu-item"><a href="java.html">Java</a></li>
+									<li class="inner-menu-item"><a href="Java_script.html">JavaScript</a></li>
+									<li class="inner-menu-item"><a href="SQL.html">SQL</a></li>
+								</ul>
+						</li>
+
+						<li class="outer-menu-item">
+							<span class="menu-title">Artist</span>
+							<ul class="inner-menu">
+								<li class="inner-menu-item"><a href="3DS_max.html">3DS Max</a></li>
+								<li class="inner-menu-item"><a href="Maya.html">Maya</a></li>
+								<li class="inner-menu-item"><a href="Illustrator.html">Illustrator</a></li>
+							</ul>
+						</li>
+
+						<li class="outer-menu-item">
+							<span class="menu-title">Game Designer</span>
+							<ul class="inner-menu">
+								<li class="inner-menu-item"><a href="story_Board.html">Directing</a></li>
+								<li class="inner-menu-item"><a href="Communication.html">Communication</a></li>
+								<li class="inner-menu-item"><a href="Game_Desing.html">Game design</a></li>
+								<li class="inner-menu-item"><a href="Scenario_Writing.html">Scenario Writing</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="pull-right">
+					<div class="search-bar">
+						<form>
+							<input type="text" class="input-search" placeholder="Search"/>
+							<input type="submit" class="input-search-submit" value="검색" />
+						</form>
+					</div>
+				</div>
+			</div>
+			</nav>
+
+		<div id="content">
+			<aside id="main-aside">
+				<div class="aside-list">
+									<h3>게임 개발 직군</h3>
+									<ul class="inner-aside">
+										<li class="list"><a href="https://youtu.be/xYwBbR5CsKo?list=PLW_uvsSPlijtJ1P1YjkCs_r603ULNP0r4">툴스 프로그래머</a></li>
+										<li class="list"><a href="https://youtu.be/h_yeLixTX3Q?list=PLW_uvsSPlijtJ1P1YjkCs_r603ULNP0r4">오디오 프로그래머</a></li>
+										<li class="list"><a href="https://youtu.be/xYwBbR5CsKo?list=PLW_uvsSPlijtJ1P1YjkCs_r603ULNP0r4">그래픽 프로그래머</a></li>
+										<li class="list"><a href="https://youtu.be/czfzGMJtAIo?list=PLW_uvsSPlijtJ1P1YjkCs_r603ULNP0r4">테크니컬 아티스트</a></li>
+										<li class="list"><a href="https://youtu.be/rNpNu3-XWew?list=PLW_uvsSPlijtJ1P1YjkCs_r603ULNP0r4">게임플레이 프로그래머</a></li>
+									</ul>
+							</div>
+			</aside>
+			<section id="main-sction">
+				<article>
+					<div class="article-header">
+						<h1 class="article-title">Directing?</h1>
+						<p class="artivle-date">PD(Project Director)</p>
+					</div>
+
+					<div class="article-body">
+						<img class="C-class" src="강원기.jpg"/>
+						<br />
+						<br />
+						<p>Producer는 개발규모에 따라 있을 수도 있고 없을수도 있다. 작은 모바일 스타트업은 PD가 겸임하는 경우가 대부분이나 대형 프로젝트의 경우 별도의 직함과 업무 영역이 할당된 경우가 많다. 이들은 개발한 게임을 어떻게 상품으로 만들지 고민하는 위치이다. 아무리 게임 시스템을 잘 만들고 서비스하는데 문제가 없다고 하더라도 시대에 뒤떨어지고 트랜드에 맞지 않고 어필할 매력포인트가 부족하다면 수익을 내기 힘들다. 특히 대규모 자본이 필요한 대형 프로젝트에서는 프로듀싱의 향방이 게임의 전체 수익을 결정할 정도로 막강한 경우가 대부분이다. 그래서 PD와 맞먹는 권한을 주게 된다. 국내에서는 PM이라고 불리는 경우가 많으며 영역이 분화되어 사업PM등으로 불리기도 한다. 회사 대표가 맡는 경우가 일반적이다.
+						</P>
+						<br />
+						<p>프로듀서는 게임이 상품이 되기 위해서 디테일을 변경하고 전체적인 전계 방향, 핵심 게임성등을 결정하는 경우가 많다. 이러한 전문적인 판단에 따라 PD가 게임 프로젝트를 운영하여 작품을 만들어내는 것이다. PD가 게임성과 직접적인 이해관계가 있다면 프로듀서는 게임의 수익에 직접적인 이해관계를 가진다. 따라서 프로듀서의 요구에 맞추어 그래픽 아트의 경향이나 분위기를 트랜드에 맞도록 조율하고 컨텐츠의 범위와 깊이를 스케줄에 맞추어 지정하게 된다. 때문에 PM과 PD가 협업을 잘해야 스케줄에 맞추어 원하는 퀄리티의 게임이 나오게 된다. 이걸 한사람이 할수도 있지만 문제는 프로듀서의 경우 인문학적 소양과 문화컨텐츠 전반에 걸친 지식, 시행착오등 게임 개발 외적인 센스와 구체적인 데이터가 필요하므로 프로젝트 운영에 특화된 PD가 하기에는 무리가 있다. 즉 분야가 다르다는 이야기.
+						</p>
+					</div>
+				</article>
+			</section>
+		</div><!-- 내용추가시 div 내부에 적용-->
+					<footer id="main-footer">
+						<p>Created By Seong Min Je<p>
+					<br/>
+						<div>
+								<p>출처:<a href="https://namu.wiki/w/%EA%B2%8C%EC%9E%84%20%EA%B8%B0%ED%9A%8D%EC%9E%90">네이버 지식백과</a></p>
+						</div>
+					</footer>
+		</div>
+	</body>
+
+</HTML>
